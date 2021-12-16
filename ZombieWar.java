@@ -1,5 +1,4 @@
 
-
 import java.util.Random;
 
 public class ZombieWar {
@@ -64,14 +63,15 @@ public class ZombieWar {
     }
 }
 
-abstract class Survivor implements ICharacters{
+abstract class Survivor implements ICharacters {
+
     int id;
     int health;
     int attack;
     boolean isDead;
     String name;
 
-    protected int getID(){
+    protected int getID() {
         return id;
     }
 
@@ -101,20 +101,21 @@ abstract class Survivor implements ICharacters{
         }
     }
 
-    public String getName(){
+    public String getName() {
         return name + " " + id;
     }
 
 }
 
 abstract class Zombie implements ICharacters {
+
     int id;
     int health;
     int attack;
     boolean isDead;
     String name;
 
-    protected int getID(){
+    protected int getID() {
         return id;
     }
 
@@ -150,6 +151,7 @@ abstract class Zombie implements ICharacters {
 }
 
 class Child extends Survivor {
+
     public Child(int id) {
         this.id = id;
         health = 20;
@@ -181,13 +183,15 @@ class Child extends Survivor {
     public void attack(Zombie zombie, int attack) {
         zombie.setHealth(attack);
     }
+
     @Override
-    public String getName(){
+    public String getName() {
         return name + " " + id;
     }
 }
 
 class Teacher extends Survivor {
+
     public Teacher(int id) {
         this.id = id;
         health = 50;
@@ -221,12 +225,13 @@ class Teacher extends Survivor {
     }
 
     @Override
-    public String getName(){
+    public String getName() {
         return name + " " + id;
     }
 }
 
 class Soldier extends Survivor {
+
     public Soldier(int id) {
         this.id = id;
         health = 100;
@@ -260,12 +265,13 @@ class Soldier extends Survivor {
     }
 
     @Override
-    public String getName(){
+    public String getName() {
         return name + " " + id;
     }
 }
 
 class CommonInfected extends Zombie {
+
     public CommonInfected(int id) {
         this.id = id;
         health = 30;
@@ -305,6 +311,7 @@ class CommonInfected extends Zombie {
 }
 
 class Tank extends Zombie {
+
     public Tank(int id) {
         this.id = id;
         health = 150;
@@ -344,61 +351,62 @@ class Tank extends Zombie {
 }
 
 class Weapon {
+
     Random rand = new Random();
     private int damage;
     private int accuracy;
     private final String weaponName;
 
-    String[] weapons = new String[] {
-            "Shotgun", "Submachine Gun", "Assault Rifle",
-            "Pistol", "Axe", "Crowbar", "Frying Pan"};
+    String[] weapons = new String[]{
+        "Shotgun", "Submachine Gun", "Assault Rifle",
+        "Pistol", "Axe", "Crowbar", "Frying Pan"};
 
     Weapon() {
         int randGun = rand.nextInt(7);
         weaponName = weapons[randGun];
 
         switch (weaponName) {
-            case "Shotgun": {
+            case "Shotgun":
                 damage = 100;
                 accuracy = 30;
-            }
-            case "Submachine Gun" : {
+                break;
+            case "Submachine Gun":
                 damage = 50;
                 accuracy = 70;
-            }
-            case "Assault Rifle" : {
+                break;
+            case "Assault Rifle":
                 damage = 70;
                 accuracy = 50;
-            }
-            case "Pistol" : {
+                break;
+            case "Pistol":
                 damage = 25;
                 accuracy = 80;
-            }
-            case "Axe" : {
+                break;
+            case "Axe":
                 damage = 50;
                 accuracy = 100;
-            }
-            case "Crowbar" : {
+                break;
+            case "Crowbar":
                 damage = 20;
                 accuracy = 100;
-            }
-            case "Frying Pan" :{
+                break;
+            case "Frying Pan":
                 damage = 5;
                 accuracy = 1;
-            }
+                break;
         }
-     }
+    }
 
     public int getDamage() {
         return damage;
-     }
+    }
 
     public int getAccuracy() {
-       return accuracy;
+        return accuracy;
     }
 
     public String getWeaponName() {
-       return weaponName;
+        return weaponName;
     }
 
     public boolean checkAccuracy(int accuracy) {
@@ -411,4 +419,3 @@ class Weapon {
         return weaponHit;
     }
 }
-

@@ -1,5 +1,4 @@
 
-
 public interface ICharacters {
 
     int getHealth();
